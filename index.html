@@ -100,7 +100,6 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .brand-name{font-family:var(--display);font-size:22px;font-weight:600;line-height:1;margin:0;letter-spacing:-.02em}
 .brand-name .plus{color:var(--moss-2)}
 .brand-sub{font-size:10.5px;color:var(--muted);margin:3px 0 0}
-.stamp{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0;align-self:center}
 
 /* ── заголовок ── */
 .title-block{margin-top:34px}
@@ -111,7 +110,6 @@ h1 .plus{color:var(--moss-2)}
 h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
 .lede{max-width:60ch;font-size:14.5px;color:var(--muted);line-height:1.75;margin:20px 0 0}
 .hand-accent{font-family:var(--hand);font-size:1.5em;color:var(--moss-2);font-weight:700;white-space:nowrap;margin-right:.14em}
-.meta{font-size:11.5px;color:var(--kraft);margin:20px 0 0;letter-spacing:.02em}
 
 /* ── разделы ── */
 .part{margin-top:48px}
@@ -236,7 +234,18 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
 .node .node-top .i{width:14px;height:14px;color:var(--moss-2)}
 .node .node-num{font-family:var(--hand);font-size:18px;color:var(--kraft);line-height:1;margin-left:auto}
 .node strong{display:block;font-size:12px;font-weight:600;margin:7px 0 3px;line-height:1.35}
-.node small{display:block;font-size:10px;color:var(--muted);line-height:1.45}
+.node small{display:block;font-size:10.5px;color:var(--muted);line-height:1.55}
+.node .eg{
+  display:block;margin-top:7px;padding-left:8px;border-left:2px solid var(--sage-3);
+  color:var(--kraft);font-size:10px;line-height:1.5;
+}
+.node.is-active .eg{color:#4A5F49}
+.node.is-current .eg{color:var(--paper-2)!important;border-left-color:rgba(253,251,244,.55)}
+.flow-lede{
+  max-width:76ch;font-size:13px;color:var(--ink);line-height:1.75;
+  margin:0 0 18px;padding-left:12px;border-left:2px solid var(--sage-3);
+}
+.json-cap{font-size:10.5px;color:var(--muted);margin:0 0 8px;letter-spacing:.02em}
 .node.trigger{border-left-color:var(--kraft)}
 .node.model{border-left-color:var(--moss);background:var(--sage)}
 .node.risk{border-left-color:var(--terra)}
@@ -264,7 +273,6 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
   .sheet{padding:30px 20px 26px}
   .tape{left:26px;width:88px}
   .sheet-head{gap:12px;padding-bottom:16px}
-  .stamp{width:100%}
   .title-block{margin-top:26px}
   .part{margin-top:36px}
   .part-head p{margin-left:0;width:100%}
@@ -329,14 +337,12 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
           <p class="brand-sub">с использованием ИИ</p>
         </div>
       </div>
-      <p class="stamp">Макет · ноябрь 2026 · ВШЭ 2026/27</p>
     </header>
 
     <div class="title-block cascade" style="--d:130ms">
       <p class="eyebrow">Приложение к презентации</p>
       <h1 id="docTitle">FEFO+ <span class="plus">с использованием ИИ</span></h1>
       <p class="lede"><span class="hand-accent">Механизм</span> работы и расчёт рынка: что происходит с паллетами салата, как считается ёмкость и откуда взялись числа.</p>
-      <p class="meta">TEAM OGUZKI · Кейс-чемпионат ВШЭ, бизнес-направление 2026/27 · «Накормить будущее»</p>
     </div>
 
     <section class="part cascade" style="--d:200ms" aria-labelledby="hMech">
@@ -381,7 +387,8 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
     </details>
 
     <section class="part cascade" style="--d:470ms" aria-labelledby="hFlow">
-      <div class="part-head"><span class="part-n">03</span><h2 id="hFlow">Схема n8n</h2><p>Автоматизация · 10 узлов</p></div>
+      <div class="part-head"><span class="part-n">03</span><h2 id="hFlow">Схема n8n</h2><p>Что происходит с каждой партией, по шагам</p></div>
+      <p class="flow-lede">n8n — это конструктор из блоков, соединённых стрелками: одни блоки забирают данные, другие считают, третьи отправляют сообщение или строку в таблицу. Наша цепочка из 10 блоков включается сама в 06:00, пока салат ещё на складе, и подсказывает логисту, какую партию куда везти, чтобы её не списали. Ничего копировать вручную не нужно — ниже расписано, что делает каждый блок, на примере двух партий.</p>
 
       <div class="flow-controls">
         <button class="btn-flow" type="button" id="toggleJson" aria-pressed="false" aria-controls="jsonBox">
@@ -394,7 +401,7 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
 
       <div class="flow-board">
         <div class="flow-board-head">
-          <p>Схема workflow · 10 узлов</p>
+          <p>10 блоков · один проход партии</p>
           <span class="flow-status" id="flowStatus">Готов к запуску</span>
         </div>
         <div class="flow-progress" aria-hidden="true"><i id="flowProgress"></i></div>
@@ -402,35 +409,36 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
 
         <div class="flow-stage" id="flowStage">
         <div class="flow-track">
-          <div class="node trigger" data-step="1"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Schedule Trigger<span class="node-num">01</span></div><strong>Ежедневно в 06:00</strong><small>Старт до того, как РЦ начнёт отгрузку</small></div>
-          <div class="node" data-step="2"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-webhook"/></svg>Webhook / HTTP<span class="node-num">02</span></div><strong>Данные РЦ</strong><small>Объём каждой партии и остаток срока годности</small></div>
-          <div class="node" data-step="3"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Code<span class="node-num">03</span></div><strong>Нормализация JSON</strong><small>Один item = одна партия: batch, volume, days_left</small></div>
-          <div class="node" data-step="4"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-sheet"/></svg>HTTP Request<span class="node-num">04</span></div><strong>Продажи магазинов</strong><small>По дням и часам, с особенностями каждой точки</small></div>
-          <div class="node model" data-step="5"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-cpu"/></svg>HTTP Request · модель<span class="node-num">05</span></div><strong>Прогноз продаж</strong><small>Сколько успеют продать до истечения срока</small></div>
-          <div class="node" data-step="6"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Code · FEFO+<span class="node-num">06</span></div><strong>Распределение</strong><small>Короткий RSL + скорость продаж точки → план</small></div>
+          <div class="node trigger" data-step="1"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Schedule Trigger<span class="node-num">01</span></div><strong>Каждое утро, в 06:00</strong><small>Цепочка включается сама, до того как РЦ начнёт отгрузку. Ничего нажимать не нужно: дальше каждый блок передаёт результат следующему.<span class="eg">Следим за двумя партиями: Л-1103/04 и Л-1103/15.</span></small></div>
+          <div class="node" data-step="2"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-webhook"/></svg>Webhook / HTTP<span class="node-num">02</span></div><strong>Забираем данные со сканера</strong><small>Сканер РЦ присылает список паллет: номер партии, сколько горшочков внутри и сколько дней осталось до списания. Без человека и без Excel.<span class="eg">Л-1103/04 — 8400 горшочков, 2 дня. Л-1103/15 — 1100 горшочков, 6 дней.</span></small></div>
+          <div class="node" data-step="3"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg>Code<span class="node-num">03</span></div><strong>Приводим к одной карточке</strong><small>Разные системы пишут данные по-своему, поэтому здесь всё превращается в одинаковые записи: batch — партия, volume — объём, days_left — дней до списания, store — магазин. Одна карточка = одна партия.<span class="eg">Такие карточки можно открыть кнопкой «Показать JSON».</span></small></div>
+          <div class="node" data-step="4"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-sheet"/></svg>HTTP Request<span class="node-num">04</span></div><strong>Добавляем продажи магазинов</strong><small>Забираем, сколько салата купили вчера и в какие часы. Прогноз считается не «в среднем по сети», а отдельно для каждой точки.<span class="eg">«М-14 · пр. Мира» разбирает салат быстро, «М-18 · окраина» — медленнее.</span></small></div>
+          <div class="node model" data-step="5"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-cpu"/></svg>HTTP Request · модель<span class="node-num">05</span></div><strong>Считаем: успеют ли продать</strong><small>Модель отвечает на один вопрос: сколько горшочков успеют купить, пока не кончится срок годности. Это и есть прогноз продаж.<span class="eg">Л-1103/04: 8400 из 8400 — успеют. Л-1103/15: около 830 из 1100 — 270 могут пропасть.</span></small></div>
+          <div class="node" data-step="6"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-route"/></svg>Code · FEFO+<span class="node-num">06</span></div><strong>Решаем, что и куда везти</strong><small>Правило FEFO+: сначала отправляем то, у чего срок заканчивается раньше, и в те магазины, где салат разбирают быстрее. На выходе — понятный план по партиям.<span class="eg">Л-1103/04 с двухдневным сроком уходит в «М-14 · пр. Мира», где её разберут целиком.</span></small></div>
         </div>
 
         <div class="branch">
           <div class="branch-head">
-            <div class="node risk" data-step="7"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-branch"/></svg>IF<span class="node-num">07</span></div><strong>Риск списания?</strong><small>Прогноз ниже объёма партии</small></div>
+            <div class="node risk" data-step="7"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-branch"/></svg>IF<span class="node-num">07</span></div><strong>Проверяем: есть риск?</strong><small>Обычная развилка «если — то — иначе»: сравниваем прогноз с объёмом партии. Если купят меньше, чем привезли, часть салата придётся списать.<span class="eg">830 &lt; 1100 → риск есть. 8400 = 8400 → всё штатно.</span></small></div>
           </div>
           <div class="branch-col risk-col">
             <p class="cap">Ветка «да» · риск есть</p>
-            <div class="node risk" data-step="8" style="border-left-color:var(--terra)"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Telegram / Почта<span class="node-num">08</span></div><strong>Логисту: план + предупреждение</strong><small>Пока салат на складе, план можно изменить</small></div>
+            <div class="node risk" data-step="8" style="border-left-color:var(--terra)"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Telegram / Почта<span class="node-num">08</span></div><strong>Пишем логисту: план + тревога</strong><small>Если риск есть — уходим сюда. Утром, пока салат ещё на складе РЦ, логист получает сообщение с новым планом и успевает его поменять.<span class="eg">«Л-1103/15: около 270 горшочков под угрозой, предложи другой маршрут». Поставки не меняем — это совет.</span></small></div>
           </div>
           <div class="branch-col">
             <p class="cap">Ветка «нет» · штатно</p>
-            <div class="node" data-step="8"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-sheet"/></svg>Google Sheets / CSV<span class="node-num">08</span></div><strong>Отчёт по партии</strong><small>Менеджеру по качеству для разговора с сетью</small></div>
+            <div class="node" data-step="8"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-sheet"/></svg>Google Sheets / CSV<span class="node-num">08</span></div><strong>Просто записываем отчёт</strong><small>Если риска нет, никого не беспокоим: добавляем строку в таблицу с партией, магазином, прогнозом и решением.<span class="eg">Л-1103/04 прошла штатно. Менеджер по качеству потом сверяет отчёт с сетью.</span></small></div>
           </div>
         </div>
 
         <div class="flow-log">
-          <div class="node" data-step="9"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-db"/></svg>Data Tables<span class="node-num">09</span></div><strong>Журнал рекомендаций</strong><small>Советы записаны, поставки не изменены. Сравниваем с контрольной группой.</small></div>
+          <div class="node" data-step="9"><div class="node-top"><svg class="i" aria-hidden="true"><use href="#i-db"/></svg>Data Tables<span class="node-num">09</span></div><strong>Сохраняем всё в журнал</strong><small>Каждый совет и каждое решение остаются в журнале рекомендаций. Реальные поставки при этом не меняются: потом сравниваем магазины, где подсказки были, с контрольной группой — стало ли меньше списаний.<span class="eg">Все числа на листе — модельные оценки, не производственные данные.</span></small></div>
         </div>
         </div><!-- /flow-stage -->
       </div>
 
       <div class="json-box" id="jsonBox" hidden>
+        <p class="json-cap">Пример карточек партий · модельные данные</p>
         <pre id="jsonSample">[
   {
     "batch": "Л-1103/04",
@@ -586,7 +594,7 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
         flowStatus.textContent = (i+1) + ' / 10';
         runStatus.textContent = 'Узел ' + String(i+1).padStart(2,'0') + ' из 10 · ' + n.querySelector('strong').textContent;
         tickStatus();
-        /* лёгкий наезд камеры: чередуем 1 и 1.012, без увеличения макета */
+        /* лёгкий наезд камеры: чередуем 1 и 1.012, без изменения раскладки */
         if(!camCancel) stage.style.setProperty('--cam-z', (i % 2 ? '1.012' : '1'));
         panTo(n);
         cameraTo(n);
@@ -624,8 +632,8 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
       if(board.classList.contains('is-filming')) return;
       firstNode.classList.add('is-idle-pulse');
       setTimeout(function(){ firstNode.classList.remove('is-idle-pulse'); }, 950);
-    }, {threshold:.35});
-    io.observe(firstNode);
+    }, {threshold:.1});
+    io.observe(document.getElementById('hFlow'));
   }
 
   runBtn.addEventListener('click', runFlow);
@@ -637,5 +645,5 @@ h2{font-size:clamp(23px,2.4vw,31px);line-height:1.2}
   });
 })();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a54c86fde922dc5c',t:'MTc5MzcyMDk0OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a54c86fde922dc5c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5547ebb7de7f5c7',t:'MTc5MzgwNDQ5Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5547ebb7de7f5c7',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
